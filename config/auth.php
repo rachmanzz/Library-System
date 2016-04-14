@@ -14,7 +14,7 @@ return [
     */
 
     'defaults' => [
-        'guard' => 'web',
+        'guard' => 'students',
         'passwords' => 'students',
     ],
 
@@ -38,7 +38,7 @@ return [
     'guards' => [
         'web' => [
             'driver' => 'session',
-            'provider' => 'students',
+            'provider' => 'users',
         ],
 
         'api' => [
@@ -46,12 +46,16 @@ return [
             'provider' => 'users',
         ],
 
-
-        //Authentication for Students
         'students' => [
-            'driver'    =>  'session',
-            'provider'  =>  'students'
-        ]
+            'driver' => 'session',
+            'provider' => 'students',
+        ],
+
+        'api' => [
+            'driver' => 'token',
+            'provider' => 'students',
+        ],
+
     ],
 
     /*

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
-use App\Student;
+use App\User;
 use Validator;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ThrottlesLogins;
@@ -29,6 +29,16 @@ class AuthController extends Controller
      * @var string
      */
     protected $redirectTo = '/';
+    protected $guard = 'student';
+
+    public function showLoginForm()
+    {
+        return view('librarysystem.studentlogin');
+    }
+    public function showRegistrationForm()
+    {
+        return view('librarysystem.studentregister');
+    }  
 
     /**
      * Create a new authentication controller instance.

@@ -1,75 +1,128 @@
-  @extends('login')
-  
-  @section('head')
-    <link rel="stylesheet" type="text/css" href="/css/studentlogin.css">
-  @stop
 
-  @section('nav')
-      <nav class="navbar navbar-default navbar-fixed-top">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Library System</a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-            <ul class="nav navbar-nav">
-              <li class="active"><a href="//localhost:8000">Home</a></li>
-              <li><a href="#about">About</a></li>
-              <li><a href="#contact">Contact</a></li>
-            </ul>
-          </div>
-        </div>
-      </nav>
+<!DOCTYPE html>
+<html>
+<head>
+  <!-- Standard Meta -->
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
 
-      <br><br><br><br>
-<div class="row">
-    <div class="col-xs-12 col-sm-8 col-md-6 col-sm-offset-2 col-md-offset-3">
+  <!-- Site Properties -->
+  <title>Student | Login</title>
+  <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/semantic-ui/2.1.8/components/icon.min.css'>
+  <link rel="stylesheet" type="text/css" href="/components/reset.css">
+  <link rel="stylesheet" type="text/css" href="/components/site.css">
 
+  <link rel="stylesheet" type="text/css" href="/components/container.css">
+  <link rel="stylesheet" type="text/css" href="/components/grid.css">
+  <link rel="stylesheet" type="text/css" href="/components/header.css">
+  <link rel="stylesheet" type="text/css" href="/components/image.css">
+  <link rel="stylesheet" type="text/css" href="/components/menu.css">
 
-    {!! Form::open(['route'=>'student.doLogin']) !!}
-      {!! csrf_field() !!}
-      <h1>Sign In <small>Imagine those books just waiting for you!</small></h1>
-      <hr class="colorgraph">
-      <div class="row"> 
+  <link rel="stylesheet" type="text/css" href="/components/divider.css">
+  <link rel="stylesheet" type="text/css" href="/components/segment.css">
+  <link rel="stylesheet" type="text/css" href="/components/form.css">
+  <link rel="stylesheet" type="text/css" href="/components/input.css">
+  <link rel="stylesheet" type="text/css" href="/components/button.css">
+  <link rel="stylesheet" type="text/css" href="/components/list.css">
+  <link rel="stylesheet" type="text/css" href="/components/message.css">
+  <link rel="stylesheet" type="text/css" href="/components/icon.css">
 
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">  
-          <!-- we will use either the username or the emaill of the student -->
+  <script src="/js/jquery.min.js"></script>
+  <script src="/components/form.js"></script>
+  <script src="/components/transition.js"></script>
+
+  <style type="text/css">
+    body {
+      background-color: #DADADA;
+    }
+    body > .grid {
+      height: 100%;
+    }
+    .image {
+      margin-top: -100px;
+    }
+    .column {
+      max-width: 450px;
+    }
+  </style>
+  <script>
+  $(document)
+    .ready(function() {
+      $('.ui.form')
+        .form({
+          fields: {
+            email: {
+              identifier  : 'email',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your e-mail'
+                },
+                {
+                  type   : 'email',
+                  prompt : 'Please enter a valid e-mail'
+                }
+              ]
+            },
+            password: {
+              identifier  : 'password',
+              rules: [
+                {
+                  type   : 'empty',
+                  prompt : 'Please enter your password'
+                },
+                {
+                  type   : 'length[6]',
+                  prompt : 'Your password must be at least 6 characters'
+                }
+              ]
+            }
+          }
+        })
+      ;
+    })
+  ;
+  </script>
+</head>
+<body>
+
+<div class="ui middle aligned center aligned grid">
+  <div class="column">
+    <h2 class="ui teal image header">
+      <div class="content">
+        Log-in to your account
+      </div>
+    </h2>
+    {!! Form::open(['route'=>'student.doLogin', 'class'=>'ui large form']) !!}
+      <div class="ui stacked segment">
+        <div class="field">
+          <div class="ui left icon input">
             {!!Form::text('id',null,['class'=>'form-control input-lg','placeholder'=>'Student Number'])!!}
+            <i class="user icon"></i>
           </div>
         </div>
+        <div class="field">
+          <div class="ui left icon input">
+            {!!Form::password('password',array('placeholder'=>'Password'))!!}
+            <i class="lock icon"></i>
+          </div>
+        </div>
+        {!!Form::submit('Login',['class'=>'ui fluid large teal submit button'])!!}
+      </div>
 
-      </div>
-      <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-12">
-          <div class="form-group">
-            {!!Form::password('password',array('class'=>'form-control input-lg','placeholder'=>'Password'))!!}
-          </div>
-        </div>
-        
-      </div>
-      
-      <hr class="colorgraph">
-      <div class="row">
-        <div class="col-xs-12 col-md-12">
-        {!!Form::submit('Sign in',['class'=>'btn btn-success btn-block btn-lg'])!!}
-        </div>
-        
-      </div>
+      <div class="ui error message"></div>
+
     {!!Form::close()!!}
 
-    <br><br>
-    @include('errors.error')
-    @include('errors.status')
-    <br>
-    <center>
-    <blockquote><p>"The more you <b>read</b> the more <b>things</b> you know. <br>The more that you <b>learn</b> the more <b>places</b> you'll go."</p><p><small>Dr. Seuss</small></p></blockquote>
+    <div class="ui message">
+      Are you new?&nbsp;&nbsp;<a href="//localhost:8000/student/register">Sign Up</a>
+    </div>
+    @include('errors.error');
   </div>
 
-  @stop
-  
+</div>
+
+</body>
+
+</html>

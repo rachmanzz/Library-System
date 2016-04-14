@@ -1,10 +1,14 @@
 		@if ($errors->any())
 		<center>
-			<ul class="alert alert-danger">
-				@foreach ($errors->all() as $error)
-					{{$error}}
-				@endforeach
-			</ul>		
+			<div class="ui negative message">
+				<div class="header">
+					Check it out!
+				</div>
+				<p>
+					@foreach ($errors->all() as $error)
+						{{$error}}
+					@endforeach					
+				</p>
+			</div>		
 		</center>
-
 		@endif

@@ -24,8 +24,8 @@ class StudentLoginRequest extends Request
     public function rules()
     {
         return [
-            'id'    =>  'required',
-            'password'  =>  'required'
+            'id'        =>  'required',
+            'password'  =>  'required',
         ];
     }
 }

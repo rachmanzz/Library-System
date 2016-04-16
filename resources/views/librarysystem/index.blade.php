@@ -12,8 +12,8 @@
 
     <title>Welcome!</title>
 
-    <link href="/css/bootstrap.min.css" rel="stylesheet">
-    <link href="/css/landing-page.css" rel="stylesheet">
+    <link href="{{asset('/css/bootstrap.min.css')}}" rel="stylesheet">
+    <link href="{{asset('/css/landing-page.css')}}" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
     <link href="http://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 </head>
@@ -106,7 +106,7 @@
                     <p class="lead">Borrowing books has never been easier than before, just login to your student account and request for the book you need then go directly to the release section. Imagine that, you are just a few clicks away to grab that book you need out of our shelfs and take it home. </p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="/images/deletebooks.jpg" alt="">
+                    <img class="img-responsive" src="{{asset('/images/deletebooks.jpg')}}" alt="">
                 </div>
             </div>
 
@@ -128,7 +128,7 @@
                     <p class="lead">Searching something specific is such a pain with book catalogs, that is why we added a search engine to the system and say goodbye to the old book catalog section in our library. You can now easily search anything with our search feature. From title, author, publisher, anything you want will be search faster than how you think of it.</p>
                 </div>
                 <div class="col-lg-5 col-sm-pull-6  col-sm-6">
-                    <img class="img-responsive" src="/images/rsz_bookcatalogue.jpg" alt="">
+                    <img class="img-responsive" src="{{asset('/')}}/images/rsz_bookcatalogue.jpg" alt="">
                 </div>
             </div>
 
@@ -150,7 +150,7 @@
                     <p class="lead">If you're a pretty busy person and always have a hectic schedules, book reservation is just for you! We make your life easier for you to enable to manage your time well, just pick the date you want to pick up and the book and done! Just drop off the school library and take it home. Just don't be silly to abandon it on the date you reserved it or else you'll be fined.</p>
                 </div>
                 <div class="col-lg-5 col-lg-offset-2 col-sm-6">
-                    <img class="img-responsive" src="/images/reservation.jpg" alt="">
+                    <img class="img-responsive" src="{{asset('/')}}/images/reservation.jpg" alt="">
                 </div>
             </div>
 
@@ -223,8 +223,8 @@
         </div>
     </footer>
 
-    <script src="/js/jquery.js"></script>
-    <script src="/js/bootstrap.min.js"></script>
+    <script src="{{asset('/js/jquery.js')}}"></script>
+    <script src="{{asset('/js/bootstrap.min.js')}}"></script>
 
 </body>
 
